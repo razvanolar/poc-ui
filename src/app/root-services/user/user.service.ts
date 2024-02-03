@@ -22,8 +22,13 @@ export class UserService {
 
   public login(): Observable<any> {
     let headers = new HttpHeaders();
-    return this.httpClient.get('http://localhost:8080/api/test/user/login', {
-      withCredentials: true
+    // headers.set('Access-Control-Allow-Origin', 'http://localhost:4200')
+    return this.httpClient.post('http://localhost:8080/api/v1/login', {
+      username: 'test',
+      password: 'test'
+    }, {
+      withCredentials: true,
+      headers: headers
     });
   }
 

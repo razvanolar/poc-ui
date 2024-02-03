@@ -28,12 +28,12 @@ import { CookiInterceptor } from './http/cookie.interceptor';
       useClass: CookiInterceptor, 
       multi: true 
     },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: appInitializer,
-      multi: true,
-      deps: [UserService]
-    },
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: appInitializer,
+    //   multi: true,
+    //   deps: [UserService]
+    // },
     provideClientHydration(),
   ],
   bootstrap: [AppComponent]

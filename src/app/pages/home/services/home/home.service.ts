@@ -10,7 +10,7 @@ export class HomeService {
   }
 
   public getTests(): Observable<any> {
-    return this.httpClient.get('http://localhost:8080/api/test', {
+    return this.httpClient.get('http://localhost:8080/api/v1/tests', {
       withCredentials: true
     });
   }

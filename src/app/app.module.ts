@@ -1,11 +1,14 @@
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { HomeModule } from './pages/home/home.module';
+import { LayoutModule } from './layout/layout.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { appInitializer } from './root-services/initializer/app-initializer';
+import { UserService } from './root-services/user/user.service';
+import { CookiInterceptor } from './http/cookie.interceptor';
 
 @NgModule({
   declarations: [
@@ -16,10 +19,22 @@ import { HomeModule } from './pages/home/home.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    HomeModule
+
+    LayoutModule
   ],
   providers: [
-    provideClientHydration()
+    { 
+      provide: HTTP_INTERCEPTORS, 
+      useClass: CookiInterceptor, 
+      multi: true 
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appInitializer,
+      multi: true,
+      deps: [UserService]
+    },
+    provideClientHydration(),
   ],
   bootstrap: [AppComponent]
 })

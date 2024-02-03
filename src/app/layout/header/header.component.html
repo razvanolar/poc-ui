@@ -1,0 +1,24 @@
+<div class="container-fluid header px-3 py-2">
+    <div class="row g-0">
+        <div class="col">
+            <div class="inline-block" (click)="navigateToHome()">
+                <span class="logo orange">AD</span>
+                <span class="logo white">LISTING</span>
+            </div>
+        </div>
+
+        @if (userInfo) {
+            <div class="col-auto">
+                <span class="white">
+                    {{ userInfo.username }}
+                </span>
+                <button class="btn btn-light">Logout</button>
+            </div>
+        }
+        @else {
+            <div class="col-auto">
+                <button class="btn btn-light" (click)="navigateToLogin()">Login</button>
+            </div>
+        }
+    </div>
+</div>

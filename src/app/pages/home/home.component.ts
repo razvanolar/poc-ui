@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.homeService.getTests().subscribe(result => {
-      console.log(result);
+      // console.log(result);
       this.tests = result;
       this.meta.addTag({
         charset: 'utf-8',

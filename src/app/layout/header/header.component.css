@@ -1,0 +1,18 @@
+
+.header {
+    background-color: rgb(79, 126, 187);
+}
+
+.logo {
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.orange {
+    color: orange;
+}
+
+.white {
+    color: white;
+}
